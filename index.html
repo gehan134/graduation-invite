@@ -57,27 +57,26 @@
 
     <div class="music-control">
    
-       <iframe width="300" height="150" 
-        src="https://youtu.be/N4GUA7atTi8?feature=shared" 
-        title="يا هلا بالحلم - حمود الخضر" 
-        frameborder="0" 
-        allow="autoplay; encrypted-media" 
-        allowfullscreen>
+      <iframe width="300" height="150" 
+    src="https://www.youtube.com/embed/N4GUA7atTi8?autoplay=1&mute=1" 
+    title="يا هلا بالحلم - حمود الخضر" 
+    frameborder="0" 
+    allow="autoplay; encrypted-media" 
+    allowfullscreen>
 </iframe>
-        <button onclick="toggleMusic()">تشغيل / إيقاف الموسيقى 🎵 (يا هلا بالحلم - حمود الخضر)</button>
+       <button onclick="unmuteVideo()">تشغيل بالصوت 🔊</button>
     </div>
 
     <p class="details">بانتظاركم لأشارككم فرحة العمر 💖</p>
 
     <script>
-        function toggleMusic() {
-    var music = document.getElementById('bg-music');
-    if (music.paused) {
-        music.play();
-    } else {
-        music.pause();
-    }
+function unmuteVideo() {
+    const iframe = document.querySelector('iframe');
+    const src = iframe.src.replace("mute=1", "mute=0");
+    iframe.src = src; // إعادة تحميل الرابط بدون كتم الصوت
 }
+
+
         const eventDate = new Date("July 23, 2025 17:00:00").getTime();
         const countdown = setInterval(() => {
             const now = new Date().getTime();
