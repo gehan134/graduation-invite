@@ -50,7 +50,7 @@
     <p class="details">أتشرف بدعوتكم لحضور حفل تخرجي</p>
     <p class="details">📅 الثلاثاء 23 يوليو 2025</p>
     <p class="details">⏰ الساعة 5:00 عصراً</p>
-    <p class="details">📍 قاعة الفخامة - المدينة</p>
+    <p class="details">📍  :قاعة</p>
     <p class="details">🎓 التخصص: هندسة برمجيات</p>
     
     <div id="countdown"></div>
@@ -63,6 +63,14 @@
     <p class="details">بانتظاركم لأشارككم فرحة العمر 💖</p>
 
     <script>
+        function toggleMusic() {
+    var music = document.getElementById('bg-music');
+    if (music.paused) {
+        music.play();
+    } else {
+        music.pause();
+    }
+}
         const eventDate = new Date("July 23, 2025 17:00:00").getTime();
         const countdown = setInterval(() => {
             const now = new Date().getTime();
