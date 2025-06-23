@@ -1,117 +1,180 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <title>دعوة حفل التخرج 🎓</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
-    <style>
- body {
-    background: white;
-    color: #800080; /* بنفسجي */
-    font-family: 'Cairo', sans-serif;
-    text-align: center;
-    padding: 30px;
-}
+  <meta charset="UTF-8">
+  <title>دعوة حفل التخرج 🎓</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(to bottom, #ffffff, #f3e6ff);
+      color: #800080;
+      font-family: 'Cairo', sans-serif;
+      text-align: center;
+      padding: 40px;
+    }
 
-h1 {
-    font-size: 36px;
-    margin-bottom: 10px;
-    color: #800080;
-}
+    .invitation-box {
+      background: #ffffff;
+      border: 2px solid #800080;
+      border-radius: 20px;
+      padding: 30px;
+      max-width: 700px;
+      margin: auto;
+      box-shadow: 0 0 15px rgba(128, 0, 128, 0.2);
+    }
 
-.details {
-    font-size: 20px;
-    margin: 15px 0;
-    color: #800080;
-}
+    h1 {
+      font-size: 36px;
+      margin-bottom: 20px;
+      color: #800080;
+    }
 
-#countdown {
-    font-size: 28px;
-    margin: 20px 0;
-    color: #800080;
-}
+    .details {
+      font-size: 20px;
+      margin: 10px 0;
+      color: #4B0082;
+    }
 
-.music-control {
-    margin-top: 20px;
-}
+    #countdown {
+      font-size: 26px;
+      margin: 25px 0;
+      color: #d63384;
+      font-weight: bold;
+      animation: pulse 1s infinite alternate;
+    }
 
-button {
-    background: #800080;   /* بنفسجي */
-    color: white;          /* النص أبيض */
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    border-radius: 8px;
-    cursor: pointer;
-}
+    @keyframes pulse {
+      from { transform: scale(1); opacity: 1; }
+      to { transform: scale(1.05); opacity: 0.8; }
+    }
 
-        button:hover {
-            background: #e6c200;
-        }
-    </style>
+    iframe {
+      border: 4px solid #800080;
+      border-radius: 12px;
+    }
+
+    .music-control, .qr-code, .confirm {
+      margin-top: 30px;
+    }
+
+    button {
+      background: #800080;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      font-size: 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background: #a64ca6;
+    }
+
+    .footer-msg {
+      margin-top: 30px;
+      font-size: 22px;
+      color: #660066;
+    }
+
+    #thanks-msg {
+      margin-top: 15px;
+      font-size: 20px;
+      color: green;
+      display: none;
+    }
+
+    audio {
+      display: none;
+    }
+
+    img.qr {
+      margin-top: 10px;
+      width: 160px;
+      border: 2px solid #800080;
+      border-radius: 10px;
+    }
+  </style>
 </head>
-<body>
+<body onload="playWelcomeSound()">
 
-    <h1>دعوة خاصة لحفل تخرج المهندسه/جيهان العراسي 🎓</h1>
+  <!-- صوت ترحيبي -->
+  <audio id="welcome-audio" autoplay>
+    <source src="https://www.soundjay.com/buttons/sounds/button-3.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="invitation-box">
+    <h1>دعوة خاصة لحفل تخرج المهندسة/ جيهان العراسي 🎓</h1>
     <p class="details">بعد سنوات من الجد والاجتهاد.. حان وقت الاحتفال!</p>
-    <p class="details">أتشرف بدعوتكم لحضور حفل تخرجي</p>
-    <p class="details">📅 الاربعاء 23 يوليو 2025</p>
+    <p class="details">يشرفني حضوركم ومشاركتكم فرحة التخرج</p>
+    <p class="details">📅 الأربعاء 23 يوليو 2025</p>
     <p class="details">⏰ الساعة 5:00 عصراً</p>
-    <p class="details">📍 YÁHYA KEMAL BEYATLI GÖSTERI MERKEZI MEZUNIYET ALANINDA TOPLANMA:قاعة</p>
+    <p class="details">📍 قاعة: YÁHYA KEMAL BEYATLI GÖSTERI MERKEZI</p>
     <p class="details">🎓 التخصص: هندسة برمجيات</p>
-    
+
     <div id="countdown"></div>
 
     <div class="music-control">
-   
       <iframe width="300" height="150" 
-    src="https://www.youtube.com/embed/N4GUA7atTi8?autoplay=1&mute=1" 
-    title="يا هلا بالحلم - حمود الخضر" 
-    frameborder="0" 
-    allow="autoplay; encrypted-media" 
-    allowfullscreen>
-</iframe>
-       <button onclick="unmuteVideo()">تشغيل بالصوت 🔊</button>
+        src="https://www.youtube.com/embed/N4GUA7atTi8?autoplay=1&mute=1" 
+        title="يا هلا بالحلم - حمود الخضر" 
+        frameborder="0" 
+        allow="autoplay; encrypted-media" 
+        allowfullscreen>
+      </iframe>
+      <br><br>
+      <button onclick="unmuteVideo()">تشغيل بالصوت 🔊</button>
     </div>
 
-    <p class="details">بانتظاركم لأشارككم فرحة العمر 💖</p>
+    <div class="confirm">
+      <button onclick="confirmAttendance()">نعم، سأحضر ✅</button>
+      <p id="thanks-msg">💌 تم تسجيل حضورك! بانتظارك بكل شوق 💜</p>
+    </div>
 
-    <script>
-function unmuteVideo() {
-    const iframe = document.querySelector('iframe');
-    const src = iframe.src.replace("mute=1", "mute=0");
-    iframe.src = src; // إعادة تحميل الرابط بدون كتم الصوت
-}
+    <div class="qr-code">
+      <p class="details">📌 موقع القاعة (امسح الـ QR):</p>
+      <img class="qr" src="https://api.qrserver.com/v1/create-qr-code/?data=https://maps.app.goo.gl/bHtJutZnJkY1eYvv7&size=200x200" alt="QR Code للموقع">
+    </div>
 
+    <p class="footer-msg">بانتظاركم لأشارككم فرحة العمر 💖</p>
+  </div>
 
-        const eventDate = new Date("July 23, 2025 17:00:00").getTime();
-        const countdown = setInterval(() => {
-            const now = new Date().getTime();
-            const distance = eventDate - now;
-            if (distance < 0) {
-                clearInterval(countdown);
-                document.getElementById("countdown").innerHTML = "🎉 لقد بدأ الحفل! 🎉";
-                return;
-            }
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+  <script>
+    function unmuteVideo() {
+      const iframe = document.querySelector('iframe');
+      const src = iframe.src.replace("mute=1", "mute=0");
+      iframe.src = src;
+    }
 
-            document.getElementById("countdown").innerHTML =
-                `⏳ ${days} يوم ${hours} ساعة ${minutes} دقيقة ${seconds} ثانية `;
-        }, 1000);
+    function playWelcomeSound() {
+      const audio = document.getElementById('welcome-audio');
+      audio.play();
+    }
 
-        const music = document.getElementById('bg-music');
-        function toggleMusic() {
-            if (music.paused) {
-                music.play();
-            } else {
-                music.pause();
-            }
-        }
-    </script>
+    function confirmAttendance() {
+      const msg = document.getElementById('thanks-msg');
+      msg.style.display = 'block';
+    }
+
+    const eventDate = new Date("July 23, 2025 17:00:00").getTime();
+    const countdown = setInterval(() => {
+      const now = new Date().getTime();
+      const distance = eventDate - now;
+      if (distance < 0) {
+        clearInterval(countdown);
+        document.getElementById("countdown").innerHTML = "🎉 لقد بدأ الحفل! 🎉";
+        return;
+      }
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById("countdown").innerHTML =
+        `⏳ ${days} يوم ${hours} ساعة ${minutes} دقيقة ${seconds} ثانية `;
+    }, 1000);
+  </script>
 
 </body>
 </html>
